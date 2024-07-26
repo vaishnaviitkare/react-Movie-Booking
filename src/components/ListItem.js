@@ -10,7 +10,7 @@ const editHandler=()=>{
 }
 return(
       <div>
-        {props.name}{props.number}
+        {props.name}{"   "}{props.number}
         <button  type="button" onClick={deleteHandler}>Delete</button>
         <button  type="button" onClick={editHandler}>Edit</button>
       </div>

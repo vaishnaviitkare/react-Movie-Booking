@@ -1,9 +1,8 @@
 import React from "react";
 import "./InputData.css";
 const InputData=(props)=>{
-
     return(
-       <React.Fragment>
+       <React.Fragment className="input">
          <label htmlFor={props.id}>{props.label}</label>
          <input
          id={props.id}
@@ -11,7 +10,7 @@ const InputData=(props)=>{
          value={props.value}
          onChange={props.onChange}
          />
-       </React.Fragment>
+      </React.Fragment>
     );
 }
 export default InputData;

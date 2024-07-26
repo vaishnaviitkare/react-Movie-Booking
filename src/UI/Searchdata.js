@@ -1,4 +1,4 @@
-import React, {useRef,useEffect,useState } from "react";
+import React, {useEffect,useState } from "react";
 import "./Searchdata";
 import InputData from "./InputData";
 const Searchdata=(props)=>{
@@ -9,15 +9,17 @@ const Searchdata=(props)=>{
     };
 
     useEffect(() => {
-        const timer=setTimeout(() => {
+        const timer = setTimeout(() => {
             props.onSearch(searchValue);
         }, 500);
-        return ()=>{
+
+        return () => {
             clearTimeout(timer);
-    }, [searchValue, props.onSearch]});
+        };
+    }, [searchValue, props.onSearch]);
 
     return(
-<div>
+<div style={{textAlign:"center"}} > 
 <InputData
 id="search"
 type="number"

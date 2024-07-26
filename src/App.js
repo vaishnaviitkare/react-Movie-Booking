@@ -5,12 +5,14 @@ import Searchdata from "./UI/Searchdata";
 import Totaldata from "./UI/Totaldata";
 function App() {
   const[inputDetails,setInputDetails]=useState([]);
+  const [filteredDetails, setFilteredDetails] = useState([]);
   const[name,setName]=useState("");
   const[number,setNumber]=useState("");
   const addHandler=(name,number)=>{
         setInputDetails((prevState) => {
             return [...prevState, { name: name, number: number, Id: Math.random().toString() }];
         });
+        setFilteredDetails((prevState) =>[...prevState, { name: name, number: number, Id: Math.random().toString() }]);
     }
     
   const deleteHandler=(id)=>{
@@ -18,6 +20,7 @@ function App() {
        return value.Id != id;
    })
     setInputDetails(arr);
+    setFilteredDetails(arr);
 
   }
 
@@ -30,20 +33,22 @@ function App() {
   }
   const searchHandler=(value)=>{
     const num=inputDetails.filter((ele)=>{
-      return ele.number===value;
+      return ele.number.includes(value);
   })
-  console.log(num)
-   setInputDetails(num);
+  
+  setFilteredDetails(num);
 
   }
   return (
     <div>
       <h1 style={{textAlign:"center"}}>Movie Booking</h1>
-      <Totaldata data={inputDetails.length}/>
+      <Totaldata data={filteredDetails.length}/>
       <Searchdata onSearch={searchHandler}/>
+      <div>
       <Admin onAddDetails={addHandler} name={name} number={number} inputData={inputDetails}/>
-      <h1>Products</h1>
-      <List inputData={inputDetails} onDelete={deleteHandler} onEdit={editHandler}/>
+      </div>
+      <h2>Details</h2>
+      <List inputData={filteredDetails} onDelete={deleteHandler} onEdit={editHandler}/>
       
     </div>
   );

@@ -36,7 +36,7 @@ const Admin=(props)=>{
   }
 return(
     <React.Fragment>
-         <form onSubmit={submitHandler}>
+         <form onSubmit={submitHandler} className="form">
             <div>
                 <InputData
                  id="number"
